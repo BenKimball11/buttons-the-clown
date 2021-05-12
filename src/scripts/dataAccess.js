@@ -36,6 +36,12 @@ document.addEventListener("stateChanged", (customEvent) => {
   render();
 });
 
+export const deleteRequest = (id) => {
+    return fetch(`${API}/requests/${id}`, { method: "DELETE" }).then(() => {
+      document.dispatchEvent(new CustomEvent("stateChanged"));
+    });
+  };
+
 export const getRequests = () => {
   return [...applicationState.requests];
 };
